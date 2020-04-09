@@ -1,14 +1,24 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const routes = require("./routes/index");
 const app = express();
+const PORT = 5000;
 
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+//app.use(bodyParser.json());
 
 app.use(express.static("client/build"));
 
+app.use(routes);
+
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/Bright-Monsters")
+  .connect(
+    process.env.MONGODB_URI ||
+      "mongodb+srv://beenish:Beeproject3@cluster0-ncqma.mongodb.net/test?retryWrites=true&w=majority"
+  )
   .then(() => console.log("MongooDB connected"))
   .catch((err) => console.log(err));
 
@@ -16,7 +26,6 @@ app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
