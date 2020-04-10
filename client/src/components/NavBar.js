@@ -1,44 +1,31 @@
 import React from "react";
-import { Typography, makeStyles, Link } from "@material-ui/core";
 
-const useStyle = makeStyles((theme) => ({
-  root: {
-    "& > * + *": {
-      marginLeft: theme.spacing(2),
-    },
-  },
-}));
+import { Link } from "react-router-dom";
 
 function NavBar() {
-  const classes = useStyle();
-  const preventDefault = (event) => {
-    event.preventDefault();
-    console.log("I'm a button.");
-  };
-
   return (
-    <Typography className={classes.root}>
-      <Link component="button" variant="h5" onClick={preventDefault}>
-        Home
-      </Link>
-      <br />
-      <br />
-      <Link component="button" variant="h5" onClick={preventDefault}>
-        Log in
-      </Link>
-      <br />
-      <br />
-      <Link component="button" variant="h5" onClick={preventDefault}>
-        Kids
-      </Link>
-      <br />
-      <br />
-      <Link component="button" variant="h5" onClick={preventDefault}>
-        Curriculum
-      </Link>
-      <br />
-      <br />
-    </Typography>
+    <div className="sideNav">
+      <nav className="sideNavbar">
+        <ul className="navMain">
+          <Link to="/">
+            <li>Home</li>
+            <br />
+          </Link>
+
+          <Link to="/Login">
+            <li className="navLogin">Login</li>
+            <br />
+          </Link>
+          <Link to="/AddChild">
+            <li className="navAddChild">Add your Child</li>
+            <br />
+          </Link>
+          <li className="curriculum">
+            <a href="something">Curriculum</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }
 
