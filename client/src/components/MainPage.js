@@ -11,7 +11,7 @@ const useStyle = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    backgroundImage: "url(${client/public/assets/h2backgtound.jfif})",
+    //backgroundImage: "url(${client/public/assets/h2backgtound.jfif})",
   },
 }));
 

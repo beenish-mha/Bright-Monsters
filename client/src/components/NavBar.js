@@ -17,12 +17,12 @@ function NavBar() {
             <br />
           </Link>
           <Link to="/AddChild">
-            <li className="navAddChild">
-              <a href="something">Add your Child</a>
-            </li>
+            <li className="navAddChild">Add your Child</li>
             <br />
           </Link>
-          <li className="curriculum">Curriculum</li>
+          <li className="curriculum">
+            <a href="something">Curriculum</a>
+          </li>
         </ul>
       </nav>
     </div>
