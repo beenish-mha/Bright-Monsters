@@ -1,11 +1,12 @@
 import React from "react";
+import MainPage from "./components/MainPage";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <h1>Bright Monsters</h1>
+      <MainPage />
     </div>
   );
 }
