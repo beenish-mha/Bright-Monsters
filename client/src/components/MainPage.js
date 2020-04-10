@@ -1,7 +1,7 @@
 import React from "react";
 import AboutUs from "./AboutUs";
 import NavBar from "./NavBar";
-import { Container, makeStyles, Paper, Grid } from "@material-ui/core";
+import { makeStyles, Paper, Grid } from "@material-ui/core";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -11,9 +11,7 @@ const useStyle = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-  },
-  containerStyle: {
-    backgroundColor: "lightblue",
+    backgroundImage: "url(${client/public/assets/h2backgtound.jfif})",
   },
 }));
 
@@ -40,14 +38,6 @@ function Mainpage() {
       </Grid>
     </div>
   );
-
-  // return (
-  //   <Container className={classes.containerStyle} maxWidth="lg">
-  //     {" "}
-  //     <NavBar />
-  //     <AboutUs />
-  //   </Container>
-  // );
 }
 
 export default Mainpage;
