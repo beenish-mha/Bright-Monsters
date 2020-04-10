@@ -1,11 +1,26 @@
 import React from "react";
 import { TextField, Button } from "@material-ui/core";
+import API from "../utils/Api";
 
 class SignIn extends React.Component {
   state = {
     name: "",
     email: "",
     password: "",
+  };
+
+  submit = (event) => {
+    event.preventDefault();
+
+    API.saveUser({
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+    })
+      .then((response) => {
+        alert("Add kids");
+      })
+      .catch((err) => console.log(err));
   };
 
   handleChange = ({ target }) => {
@@ -20,7 +35,12 @@ class SignIn extends React.Component {
     return (
       <div>
         <h6>Sign In</h6>
-        <form className="form" noValidate autoComplete="off">
+        <form
+          onSubmit={this.submit}
+          className="form"
+          noValidate
+          autoComplete="off"
+        >
           <div>
             <TextField
               required
@@ -50,7 +70,7 @@ class SignIn extends React.Component {
               onChange={this.handleChange}
             />
             <br />
-            <Button variant="contained">Save</Button>
+            <button className="btn">Save</button>
           </div>
         </form>
       </div>
