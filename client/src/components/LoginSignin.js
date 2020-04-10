@@ -2,6 +2,7 @@ import React from "react";
 
 import NavBar from "./NavBar";
 import { makeStyles, Paper, Grid, Button, TextField } from "@material-ui/core";
+import SignIn from "./SignIn";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -40,23 +41,7 @@ function LoginSignin() {
             <Button variant="contained">Sign In</Button>
           </Paper>
           <Paper className={classes.paper}>
-            <h6>Sign In</h6>
-            <form className={classes.root} noValidate autoComplete="off">
-              <div>
-                <TextField
-                  required
-                  id="standard-required"
-                  label="E-Mail"
-                  defaultValue=""
-                />
-                <TextField
-                  id="standard-password-input"
-                  label="Password"
-                  type="password"
-                  autoComplete="current-password"
-                />
-              </div>
-            </form>
+            <SignIn />
           </Paper>
         </Grid>
       </Grid>
