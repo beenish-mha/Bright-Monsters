@@ -24,18 +24,7 @@ const useStyle = makeStyles((theme) => ({
 function LoginSignin() {
   const classes = useStyle();
 
-  const [btnName, setbtnName] = useState("");
-  const [btncheck, setbtncheck] = useState(false);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    setbtnName(e.target.name);
-  };
-  console.log(btnName);
-
-  if (btnName === "signIn") {
-    setbtncheck(true);
-  }
+  const [btnName, setbtnName] = useState("default");
 
   return (
     <div className={classes.root}>
@@ -52,23 +41,27 @@ function LoginSignin() {
         </Grid>
         <Grid item xs={6} sm={9}>
           <Paper className={classes.paper}>
-            <button className="btn" name="logIn" onClick={handleClick}>
+            <Button
+              variant="contained"
+              className="btn"
+              name="logIn"
+              onClick={() => setbtnName("logIn")}
+            >
               Log In
-            </button>
-            <button className="btn" name="signIn" onClick={handleClick}>
+            </Button>
+            <Button
+              variant="contained"
+              className="btn"
+              name="signIn"
+              onClick={() => setbtnName("signIn")}
+            >
               Sign In
-            </button>
+            </Button>
           </Paper>
           <Paper className={classes.paper}>
-            {btncheck ? (
-              <div>
-                <SignIn />
-              </div>
-            ) : (
-              <div>
-                <LogIn />
-              </div>
-            )}
+            {btnName === "signIn" && <SignIn />}
+            {btnName === "logIn" && <LogIn />}
+            {btnName === "default" && <LogIn />}
           </Paper>
         </Grid>
       </Grid>
