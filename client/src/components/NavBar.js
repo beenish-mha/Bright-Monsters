@@ -16,7 +16,7 @@ function NavBar() {
             <li className="navLogin">Login</li>
             <br />
           </Link>
-          <Link to="/AddChild">
+          <Link to="/AddChildSelectChild">
             <li className="navAddChild">Add your Child</li>
             <br />
           </Link>

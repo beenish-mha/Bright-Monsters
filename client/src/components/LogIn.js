@@ -1,12 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { TextField, Button } from "@material-ui/core";
 import API from "../utils/Api";
+import AddChildSelectChild from "./AddChildSelectChild.js";
 
 class LogIn extends React.Component {
   state = {
     email: "",
     password: "",
     user: {},
+    addChild: false,
   };
 
   submit = (e) => {
@@ -24,6 +28,7 @@ class LogIn extends React.Component {
       //   });
       console.log("this is user" + this.state.user.name);
       if (this.state.user.password === this.state.password) {
+        this.state.addChild = true;
         console.log("password match");
       } else {
         alert("please try your password again");
@@ -69,7 +74,10 @@ class LogIn extends React.Component {
               onChange={this.handleChange}
             />
             <br />
+
             <button className="btn">Enter</button>
+
+            {this.state.addChild === true && <AddChildSelectChild />}
           </div>
         </form>
       </div>
