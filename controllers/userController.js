@@ -7,8 +7,8 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
-  findById: function (req, res) {
-    User.findById(req.params.id)
+  findByEmail: function (req, res) {
+    User.findOne({ email: req.params.email })
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },

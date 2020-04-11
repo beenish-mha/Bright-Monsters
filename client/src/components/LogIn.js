@@ -6,21 +6,23 @@ class LogIn extends React.Component {
   state = {
     email: "",
     password: "",
+    user: [],
   };
 
-  //   submit = (event) => {
-  //     event.preventDefault();
+  submit = (e) => {
+    e.preventDefault();
 
-  //     API.saveUser({
-  //       name: this.state.name,
-  //       email: this.state.email,
-  //       password: this.state.password,
-  //     })
-  //       .then((response) => {
-  //         alert("Add kids");
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
+    let searchedUser = this.state.email;
+    API.getUsers(searchedUser).then((res) => {
+      this.setState({
+        user: res.data.items,
+      }).catch((err) => {
+        console.log(err);
+      });
+
+      console.log(this.state.user);
+    });
+  };
 
   handleChange = ({ target }) => {
     const { name, value } = target;
@@ -30,7 +32,7 @@ class LogIn extends React.Component {
   };
 
   render() {
-    console.log(this.state.password);
+    console.log(this.state.email);
     return (
       <div>
         <h6>Log In</h6>
