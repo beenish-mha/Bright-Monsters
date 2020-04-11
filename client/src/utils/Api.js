@@ -10,4 +10,8 @@ export default {
   deleteUser: function (id) {
     return axios.delete("/api/users/" + id);
   },
+
+  getUserByEmail: function (email) {
+    return axios.get("api/users/" + email);
+  },
 };

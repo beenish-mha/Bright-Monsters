@@ -6,21 +6,28 @@ class LogIn extends React.Component {
   state = {
     email: "",
     password: "",
-    user: [],
+    user: {},
   };
 
   submit = (e) => {
     e.preventDefault();
 
     let searchedUser = this.state.email;
-    API.getUsers(searchedUser).then((res) => {
-      this.setState({
-        user: res.data.items,
-      }).catch((err) => {
-        console.log(err);
-      });
 
-      console.log(this.state.user);
+    API.getUserByEmail(searchedUser).then((res) => {
+      console.log(res);
+      this.setState({
+        user: res.data,
+      });
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+      console.log("this is user" + this.state.user.name);
+      if (this.state.user.password === this.state.password) {
+        console.log("password match");
+      } else {
+        alert("please try your password again");
+      }
     });
   };
 
@@ -32,7 +39,7 @@ class LogIn extends React.Component {
   };
 
   render() {
-    console.log(this.state.email);
+    console.log(this.state.password);
     return (
       <div>
         <h6>Log In</h6>
