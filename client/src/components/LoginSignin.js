@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import NavBar from "./NavBar";
 import { makeStyles, Paper, Grid, Button, TextField } from "@material-ui/core";
 import SignIn from "./SignIn";
+import LogIn from "./LogIn";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,20 @@ const useStyle = makeStyles((theme) => ({
 
 function LoginSignin() {
   const classes = useStyle();
+
+  const [btnName, setbtnName] = useState("");
+  const [btncheck, setbtncheck] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setbtnName(e.target.name);
+  };
+  console.log(btnName);
+
+  if (btnName === "signIn") {
+    setbtncheck(true);
+  }
+
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -37,11 +52,23 @@ function LoginSignin() {
         </Grid>
         <Grid item xs={6} sm={9}>
           <Paper className={classes.paper}>
-            <Button variant="contained">Log In</Button>
-            <Button variant="contained">Sign In</Button>
+            <button className="btn" name="logIn" onClick={handleClick}>
+              Log In
+            </button>
+            <button className="btn" name="signIn" onClick={handleClick}>
+              Sign In
+            </button>
           </Paper>
           <Paper className={classes.paper}>
-            <SignIn />
+            {btncheck ? (
+              <div>
+                <SignIn />
+              </div>
+            ) : (
+              <div>
+                <LogIn />
+              </div>
+            )}
           </Paper>
         </Grid>
       </Grid>
