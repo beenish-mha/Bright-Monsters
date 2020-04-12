@@ -21,7 +21,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function LoginSignin() {
+function LoginSignin(props) {
   const classes = useStyle();
 
   const [btnName, setbtnName] = useState("default");
@@ -60,8 +60,8 @@ function LoginSignin() {
           </Paper>
           <Paper className={classes.paper}>
             {btnName === "signIn" && <SignIn />}
-            {btnName === "logIn" && <LogIn />}
-            {btnName === "default" && <LogIn />}
+            {btnName === "logIn" && <LogIn history={props.history} />}
+            {btnName === "default" && <LogIn history={props.history} />}
           </Paper>
         </Grid>
       </Grid>

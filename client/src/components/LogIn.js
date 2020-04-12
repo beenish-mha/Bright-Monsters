@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { TextField, Button } from "@material-ui/core";
 import API from "../utils/Api";
 import AddChildSelectChild from "./AddChildSelectChild.js";
 
 class LogIn extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     email: "",
     password: "",
@@ -30,6 +33,7 @@ class LogIn extends React.Component {
       if (this.state.user.password === this.state.password) {
         this.state.addChild = true;
         console.log("password match");
+        this.props.history.push("/AddChildSelectChild");
       } else {
         alert("please try your password again");
       }
