@@ -4,21 +4,21 @@ import API from "../utils/Api";
 
 class AddChild extends React.Component {
   state = {
-    name: "",
+    childName: "",
     email: "",
-    password: "",
+    childAge: "",
   };
 
   submit = (event) => {
     event.preventDefault();
 
-    API.saveUser({
-      name: this.state.name,
+    API.updateUserByEmail({
+      kids: this.state.childName,
       email: this.state.email,
-      password: this.state.password,
+      childAge: this.state.childAge,
     })
       .then((response) => {
-        alert("Add kids");
+        alert("child added give them assignment");
       })
       .catch((err) => console.log(err));
   };

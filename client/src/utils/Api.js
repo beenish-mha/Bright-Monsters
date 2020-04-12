@@ -14,4 +14,7 @@ export default {
   getUserByEmail: function (email) {
     return axios.get("api/users/" + email);
   },
+  updateUserByEmail: function (email) {
+    return axios.put("api/users/" + email);
+  },
 };

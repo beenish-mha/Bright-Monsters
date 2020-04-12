@@ -17,13 +17,23 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
+  // update: function (req, res) {
+  //   User.findOneAndUpdate({ email: req.params.email }, req.body)
+  //     .then((dbUser) => res.json(dbUser))
+  //     .catch((err) => res.status(422).json(err));
+  // },
+
   update: function (req, res) {
-    User.findOneAndUpdate({ id: req.params.id }, req.body)
+    User.findOneAndUpdate(
+      { email: req.params.email },
+      { $push: { kids: { name: "Abdul H", age: "10" } } }
+    )
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
+
   remove: function (req, res) {
-    User.findById(req.params.id)
+    User.findOne({ email: req.params.email })
       .then((dbUser) => dbUser.remove())
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
