@@ -4,10 +4,10 @@ const userController = require("../../controllers/userController");
 // Matches with "/api/user"
 router.route("/").get(userController.findAll).post(userController.create);
 
-// Matches with "/api/user/:id"
+// Matches with "/api/user/:email"
 router
-  .route("/:id")
-  .get(userController.findById)
+  .route("/:email")
+  .get(userController.findByEmail)
   .put(userController.update)
   .delete(userController.remove);
 

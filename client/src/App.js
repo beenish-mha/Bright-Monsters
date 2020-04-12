@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginSignin from "./components/LoginSignin";
-import AddChild from "./components/AddChild";
+import AddChildSelectChild from "./components/AddChildSelectChild.js";
 import MainPage from "./components/MainPage";
+
 function App() {
   return (
     <Router>
@@ -10,7 +11,11 @@ function App() {
         <Switch>
           <Route path="/" exact component={MainPage} />
           <Route path="/LoginSignin" exact component={LoginSignin} />
-          <Route path="/AddChild" exact component={AddChild} />
+          <Route
+            path="/AddChildSelectChild"
+            exact
+            component={AddChildSelectChild}
+          />
         </Switch>
       </div>
     </Router>
