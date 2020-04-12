@@ -22,6 +22,8 @@ mongoose
   .then(() => console.log("MongooDB connected"))
   .catch((err) => console.log(err));
 
+mongoose.set("useNewUrlParser", true);
+
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });

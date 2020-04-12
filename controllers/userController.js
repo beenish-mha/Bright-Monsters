@@ -24,9 +24,14 @@ module.exports = {
   // },
 
   update: function (req, res) {
-    User.findOneAndUpdate(
-      { email: req.params.email },
-      { $push: { kids: { name: "Abdul H", age: "10" } } }
+    //TODO - Reference the body instead of the query params
+    User.updateOne(
+      { email: req.body.email },
+      {
+        $push: {
+          kids: [{ name: req.body.name, age: req.body.age }],
+        },
+      }
     )
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));

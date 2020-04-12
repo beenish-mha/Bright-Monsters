@@ -13,12 +13,12 @@ class AddChild extends React.Component {
     event.preventDefault();
 
     API.updateUserByEmail({
-      kids: this.state.childName,
+      name: this.state.childName,
       email: this.state.email,
-      childAge: this.state.childAge,
+      age: this.state.childAge,
     })
       .then((response) => {
-        alert("child added give them assignment");
+        //go to tasks page
       })
       .catch((err) => console.log(err));
   };
@@ -31,7 +31,6 @@ class AddChild extends React.Component {
   };
 
   render() {
-    console.log(this.state.password);
     return (
       <div>
         <h6>Add Your Child</h6>
