@@ -1,5 +1,5 @@
 import React from "react";
-import AboutUs from "./AboutUs";
+import AddChild from "./AddChild";
 import NavBar from "./NavBar";
 import { makeStyles, Paper, Grid } from "@material-ui/core";
 
@@ -37,7 +37,9 @@ function AddChildSelectChild() {
                 <Paper className={classes.paper}>Your Kids</Paper>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}>Add Kids</Paper>
+                <Paper className={classes.paper}>
+                  <AddChild />
+                </Paper>
               </Grid>
             </Grid>
           </Paper>
