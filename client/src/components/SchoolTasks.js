@@ -21,39 +21,69 @@ function SchoolTasks() {
   return (
     <div>
       <p>school tasks will go here</p>
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="outlined-basic" variant="outlined" />
-        <div className={classes.btnRoot}>
-          <Button variant="contained">Add</Button>
-          <Button variant="contained">Delete</Button>
-          <Button variant="contained">Get Reward</Button>
-        </div>
+      <div>
+        <form>
+          <TextField
+            className={classes.root}
+            id="outlined-basic"
+            variant="outlined"
+          />
+          <div className={classes.btnRoot}>
+            <Button variant="contained">Add</Button>
+            <Button variant="contained">Delete</Button>
+            <Button variant="contained">Get Reward</Button>
+          </div>
+        </form>
 
-        <TextField id="outlined-basic" variant="outlined" />
-        <div className={classes.btnRoot}>
-          <Button variant="contained">Add</Button>
-          <Button variant="contained">Delete</Button>
-          <Button variant="contained">Get Reward</Button>
-        </div>
-        <TextField id="outlined-basic" variant="outlined" />
-        <div className={classes.btnRoot}>
-          <Button variant="contained">Add</Button>
-          <Button variant="contained">Delete</Button>
-          <Button variant="contained">Get Reward</Button>
-        </div>
-        <TextField id="outlined-basic" variant="outlined" />
-        <div className={classes.btnRoot}>
-          <Button variant="contained">Add</Button>
-          <Button variant="contained">Delete</Button>
-          <Button variant="contained">Get Reward</Button>
-        </div>
-        <TextField id="outlined-basic" variant="outlined" />
-        <div className={classes.btnRoot}>
-          <Button variant="contained">Add</Button>
-          <Button variant="contained">Delete</Button>
-          <Button variant="contained">Get Reward</Button>
-        </div>
-      </form>
+        <form>
+          <TextField
+            className={classes.root}
+            id="outlined-basic"
+            variant="outlined"
+          />
+          <div className={classes.btnRoot}>
+            <Button variant="contained">Add</Button>
+            <Button variant="contained">Delete</Button>
+            <Button variant="contained">Get Reward</Button>
+          </div>
+        </form>
+        <form>
+          <TextField
+            className={classes.root}
+            id="outlined-basic"
+            variant="outlined"
+          />
+          <div className={classes.btnRoot}>
+            <Button variant="contained">Add</Button>
+            <Button variant="contained">Delete</Button>
+            <Button variant="contained">Get Reward</Button>
+          </div>
+        </form>
+        <form>
+          <TextField
+            className={classes.root}
+            id="outlined-basic"
+            variant="outlined"
+          />
+          <div className={classes.btnRoot}>
+            <Button variant="contained">Add</Button>
+            <Button variant="contained">Delete</Button>
+            <Button variant="contained">Get Reward</Button>
+          </div>
+        </form>
+        <form>
+          <TextField
+            className={classes.root}
+            id="outlined-basic"
+            variant="outlined"
+          />
+          <div className={classes.btnRoot}>
+            <Button variant="contained">Add</Button>
+            <Button variant="contained">Delete</Button>
+            <Button variant="contained">Get Reward</Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
