@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../utils/Api";
+import { Link } from "react-router-dom";
 
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -35,9 +36,16 @@ class SelectChild extends React.Component {
         <br />
         <p>Select your kids to check their tasks</p>
         <List component="nav" aria-label="secondary mailbox folders">
-          {parent.map((parent) => (
-            <ListItem button key={parent._id} className="table-active">
-              <ListItemText primary={parent.name} />
+          {parent.map((kids) => (
+            <ListItem button key={kids._id}>
+              <Link
+                to={{
+                  pathname: "/Tasks",
+                  aboutProps: { name: kids.name, age: kids.age },
+                }}
+              >
+                <ListItemText primary={kids.name} />
+              </Link>
             </ListItem>
           ))}
         </List>

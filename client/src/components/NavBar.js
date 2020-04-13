@@ -21,7 +21,7 @@ function NavBar() {
             <br />
           </Link>
           <li className="curriculum">
-            <a href="something">Curriculum</a>
+            <a href="https://www.gov.uk/national-curriculum">Curriculum</a>
           </li>
         </ul>
       </nav>
