@@ -59,7 +59,7 @@ function LoginSignin(props) {
             </Button>
           </Paper>
           <Paper className={classes.paper}>
-            {btnName === "signIn" && <SignIn />}
+            {btnName === "signIn" && <SignIn history={props.history} />}
             {btnName === "logIn" && <LogIn history={props.history} />}
             {btnName === "default" && <LogIn history={props.history} />}
           </Paper>

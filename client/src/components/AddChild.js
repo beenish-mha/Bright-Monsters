@@ -3,9 +3,12 @@ import { TextField, Button } from "@material-ui/core";
 import API from "../utils/Api";
 
 class AddChild extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
     childName: "",
-    email: "",
+    email: this.props.email,
     childAge: "",
   };
 
@@ -47,7 +50,7 @@ class AddChild extends React.Component {
               label="Your E-Mail"
               value={this.state.email}
               name="email"
-              onChange={this.handleChange}
+              // onChange={this.handleChange}
             />
             <br />
             <br />
