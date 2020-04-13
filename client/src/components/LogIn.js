@@ -23,7 +23,7 @@ class LogIn extends React.Component {
     this.setState({});
 
     API.getUserByEmail(searchedUser).then((res) => {
-      console.log(res);
+      // console.log(res);
       this.setState({
         user: res.data,
       });

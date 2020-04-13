@@ -17,14 +17,8 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
-  // update: function (req, res) {
-  //   User.findOneAndUpdate({ email: req.params.email }, req.body)
-  //     .then((dbUser) => res.json(dbUser))
-  //     .catch((err) => res.status(422).json(err));
-  // },
 
   update: function (req, res) {
-    //TODO - Reference the body instead of the query params
     User.updateOne(
       { email: req.body.email },
       {

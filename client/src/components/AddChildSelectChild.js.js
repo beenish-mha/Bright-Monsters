@@ -3,6 +3,7 @@ import AddChild from "./AddChild";
 import NavBar from "./NavBar";
 import { Redirect } from "react-router-dom";
 import { makeStyles, Paper, Grid } from "@material-ui/core";
+import SelectChild from "./SelectChild";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,9 @@ function AddChildSelectChild(props) {
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}>Your Kids</Paper>
+                <Paper className={classes.paper}>
+                  <SelectChild email={email} />
+                </Paper>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
