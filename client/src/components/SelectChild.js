@@ -1,6 +1,11 @@
 import React from "react";
 import API from "../utils/Api";
 
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+
+import ListItemText from "@material-ui/core/ListItemText";
+
 class SelectChild extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +23,7 @@ class SelectChild extends React.Component {
         user: res.data.kids,
         parentName: res.data.name,
       });
-      console.log("hello" + this.state.user[0].name);
+      //console.log("Hello" + this.state.user[0].name);
     });
   }
 
@@ -28,15 +33,14 @@ class SelectChild extends React.Component {
       <div>
         <h5>Hello {this.state.parentName}</h5> <br />
         <br />
-        <table>
-          <tbody>
-            {parent.map((parent) => (
-              <tr key={parent._id} className="table-active">
-                <td>{parent.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <p>Select your kids to check their tasks</p>
+        <List component="nav" aria-label="secondary mailbox folders">
+          {parent.map((parent) => (
+            <ListItem button key={parent._id} className="table-active">
+              <ListItemText primary={parent.name} />
+            </ListItem>
+          ))}
+        </List>
       </div>
     );
   }

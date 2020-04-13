@@ -21,6 +21,7 @@ class SignIn extends React.Component {
       password: this.state.password,
     })
       .then((response) => {
+        //window.location.reload();
         this.props.history.push("/AddChildSelectChild", {
           email: this.state.email,
         });
