@@ -7,21 +7,38 @@ class SelectChild extends React.Component {
   }
   state = {
     email: this.props.email,
-    user: {},
+    parentName: "",
+    user: [],
   };
 
   componentDidMount() {
     API.getUserByEmail(this.state.email).then((res) => {
       console.log(res);
       this.setState({
-        user: res.data,
+        user: res.data.kids,
+        parentName: res.data.name,
       });
-      console.log("hello" + this.state.user.kids[0].name);
+      console.log("hello" + this.state.user[0].name);
     });
   }
 
   render() {
-    return <h2>Select Child</h2>;
+    let parent = this.state.user;
+    return (
+      <div>
+        <h5>Hello {this.state.parentName}</h5> <br />
+        <br />
+        <table>
+          <tbody>
+            {parent.map((parent) => (
+              <tr key={parent._id} className="table-active">
+                <td>{parent.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 }
 
