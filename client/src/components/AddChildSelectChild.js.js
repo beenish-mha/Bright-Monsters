@@ -1,7 +1,9 @@
 import React from "react";
-import AboutUs from "./AboutUs";
+import AddChild from "./AddChild";
 import NavBar from "./NavBar";
+import { Redirect } from "react-router-dom";
 import { makeStyles, Paper, Grid } from "@material-ui/core";
+import SelectChild from "./SelectChild";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -15,8 +17,15 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function AddChildSelectChild() {
+function AddChildSelectChild(props) {
   const classes = useStyle();
+
+  if (!props.location.state.email) {
+    return <Redirect to="LoginSignin" />;
+  }
+
+  const email = props.location.state.email;
+
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
@@ -34,10 +43,14 @@ function AddChildSelectChild() {
           <Paper className={classes.paper}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}>Your Kids</Paper>
+                <Paper className={classes.paper}>
+                  <SelectChild email={email} />
+                </Paper>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Paper className={classes.paper}>Add Kids</Paper>
+                <Paper className={classes.paper}>
+                  <AddChild email={email} />
+                </Paper>
               </Grid>
             </Grid>
           </Paper>

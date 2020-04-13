@@ -20,20 +20,23 @@ class LogIn extends React.Component {
     e.preventDefault();
 
     let searchedUser = this.state.email;
+    this.setState({});
 
     API.getUserByEmail(searchedUser).then((res) => {
-      console.log(res);
+      // console.log(res);
       this.setState({
         user: res.data,
       });
       //   .catch((error) => {
       //     console.log(error);
       //   });
-      console.log("this is user" + this.state.user.name);
+      //console.log("this is user" + this.state.user.name);
       if (this.state.user.password === this.state.password) {
         this.state.addChild = true;
         console.log("password match");
-        this.props.history.push("/AddChildSelectChild");
+        this.props.history.push("/AddChildSelectChild", {
+          email: this.state.email,
+        });
       } else {
         alert("please try your password again");
       }
@@ -48,7 +51,6 @@ class LogIn extends React.Component {
   };
 
   render() {
-    console.log(this.state.password);
     return (
       <div>
         <h6>Log In</h6>
@@ -81,7 +83,9 @@ class LogIn extends React.Component {
 
             <button className="btn">Enter</button>
 
-            {this.state.addChild === true && <AddChildSelectChild />}
+            {/* {this.state.addChild === true && (
+              <AddChildSelectChild email={this.state.email} />
+            )} */}
           </div>
         </form>
       </div>

@@ -2,29 +2,26 @@ import React from "react";
 import { TextField, Button } from "@material-ui/core";
 import API from "../utils/Api";
 
-class SignIn extends React.Component {
+class AddChild extends React.Component {
   constructor(props) {
     super(props);
   }
   state = {
-    name: "",
-    email: "",
-    password: "",
+    childName: "",
+    email: this.props.email,
+    childAge: "",
   };
 
   submit = (event) => {
     event.preventDefault();
 
-    API.saveUser({
-      name: this.state.name,
+    API.updateUserByEmail({
+      name: this.state.childName,
       email: this.state.email,
-      password: this.state.password,
+      age: this.state.childAge,
     })
       .then((response) => {
-        //window.location.reload();
-        this.props.history.push("/AddChildSelectChild", {
-          email: this.state.email,
-        });
+        //go to tasks page
       })
       .catch((err) => console.log(err));
   };
@@ -37,10 +34,9 @@ class SignIn extends React.Component {
   };
 
   render() {
-    console.log(this.state.password);
     return (
       <div>
-        <h6>Sign In</h6>
+        <h6>Add Your Child</h6>
         <form
           onSubmit={this.submit}
           className="form"
@@ -51,30 +47,31 @@ class SignIn extends React.Component {
             <TextField
               required
               id="standard-required"
-              label="Full Name"
-              value={this.state.name}
-              name="name"
-              onChange={this.handleChange}
+              label="Your E-Mail"
+              value={this.state.email}
+              name="email"
+              // onChange={this.handleChange}
             />
+            <br />
             <br />
             <TextField
               required
               id="standard-required"
-              label="E-Mail"
-              value={this.state.email}
-              name="email"
+              label="Child Full Name"
+              value={this.state.childName}
+              name="childName"
               onChange={this.handleChange}
             />
             <br />
+            <br />
             <TextField
-              required
-              id="standard-password-input"
-              label="Password"
-              type="password"
-              value={this.state.password}
-              name="password"
+              id="standard-required"
+              label="child Age"
+              value={this.state.childAge}
+              name="childAge"
               onChange={this.handleChange}
             />
+            <br />
             <br />
             <button className="btn">Save</button>
           </div>
@@ -84,4 +81,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default AddChild;
