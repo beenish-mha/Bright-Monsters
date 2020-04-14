@@ -4,6 +4,9 @@ import Chores from "./Chores";
 import Rewards from "./Rewards";
 import NavBar from "./NavBar";
 import { makeStyles, Paper, Grid, Button } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -14,6 +17,10 @@ const useStyle = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
     //backgroundImage: "url(${client/public/assets/h2backgtound.jfif})",
+  },
+  btn: {
+    padding: theme.spacing(1),
+    textAlign: "center",
   },
 }));
 
@@ -40,40 +47,41 @@ function Tasks(props) {
             <Grid container spacing={2}>
               <Grid item xs={6} sm={3}>
                 <Paper className={classes.paper}>
-                  <ul>
-                    <li>
-                      <Button
-                        variant="contained"
-                        className="btn"
-                        name="schoolWork"
-                        onClick={() => setbtnName("schoolWork")}
-                      >
-                        School Work
-                      </Button>
-                      <br />
-                    </li>
-                    <li>
-                      <Button
-                        variant="contained"
-                        className="btn"
-                        name="schoresk"
-                        onClick={() => setbtnName("chores")}
-                      >
-                        Chores
-                      </Button>
-                      <br />
-                    </li>
-                    <li>
-                      <Button
-                        variant="contained"
-                        className="btn"
-                        name="rewards"
-                        onClick={() => setbtnName("rewards")}
-                      >
-                        Rewards
-                      </Button>
-                    </li>
-                  </ul>
+                  <List component="nav" aria-label="secondary mailbox folders">
+                    <ListItem
+                      button
+                      variant="contained"
+                      className={classes.btn}
+                      name="schoolWork"
+                      onClick={() => setbtnName("schoolWork")}
+                    >
+                      <ListItemText primary="School Work" />
+                    </ListItem>
+                  </List>
+
+                  <List component="nav" aria-label="secondary mailbox folders">
+                    <ListItem
+                      button
+                      variant="contained"
+                      className={classes.btn}
+                      name="chores"
+                      onClick={() => setbtnName("chores")}
+                    >
+                      <ListItemText primary="Chores" />
+                    </ListItem>
+                  </List>
+
+                  <List component="nav" aria-label="secondary mailbox folders">
+                    <ListItem
+                      button
+                      variant="contained"
+                      className={classes.btn}
+                      name="rewards"
+                      onClick={() => setbtnName("rewards")}
+                    >
+                      <ListItemText primary="Rewards" />
+                    </ListItem>
+                  </List>
                 </Paper>
               </Grid>
               <Grid item xs={6} sm={9}>

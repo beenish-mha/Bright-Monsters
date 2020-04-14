@@ -47,16 +47,6 @@ class AddChild extends React.Component {
             <TextField
               required
               id="standard-required"
-              label="Your E-Mail"
-              value={this.state.email}
-              name="email"
-              // onChange={this.handleChange}
-            />
-            <br />
-            <br />
-            <TextField
-              required
-              id="standard-required"
               label="Child Full Name"
               value={this.state.childName}
               name="childName"
