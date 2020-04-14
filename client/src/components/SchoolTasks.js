@@ -20,7 +20,7 @@ function SchoolTasks() {
   const classes = useStyles();
   return (
     <div>
-      <p>school tasks will go here</p>
+      <h4>School Work</h4>
       <div>
         <form>
           <TextField
