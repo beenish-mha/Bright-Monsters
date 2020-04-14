@@ -7,6 +7,15 @@ module.exports = {
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
+
+  //find the right kid with user email
+
+  findKid: function (req, res) {
+    User.findOne({ email: req.params.name })
+      .then((dbUser) => res.json(dbUser))
+      .catch((err) => res.status(422).json(err));
+  },
+
   findByEmail: function (req, res) {
     User.findOne({ email: req.params.email })
       .then((dbUser) => res.json(dbUser))
