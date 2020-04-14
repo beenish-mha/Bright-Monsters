@@ -1,5 +1,6 @@
 import React from "react";
 import SchoolTasks from "./SchoolTasks";
+import Chores from "./Chores";
 import NavBar from "./NavBar";
 import { makeStyles, Paper, Grid } from "@material-ui/core";
 
@@ -46,7 +47,7 @@ function Tasks(props) {
               </Grid>
               <Grid item xs={6} sm={9}>
                 <Paper className={classes.paper}>
-                  <SchoolTasks />
+                  <Chores />
                 </Paper>
               </Grid>
             </Grid>
