@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import SchoolTasks from "./SchoolTasks";
 import Chores from "./Chores";
+import Rewards from "./Rewards";
 import NavBar from "./NavBar";
-import { makeStyles, Paper, Grid } from "@material-ui/core";
+import { makeStyles, Paper, Grid, Button } from "@material-ui/core";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,7 @@ const useStyle = makeStyles((theme) => ({
 function Tasks(props) {
   const child = props.location.aboutProps;
   const classes = useStyle();
+  const [btnName, setbtnName] = useState("default");
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -39,15 +41,47 @@ function Tasks(props) {
               <Grid item xs={6} sm={3}>
                 <Paper className={classes.paper}>
                   <ul>
-                    <li>School Work</li>
-                    <li>Chores</li>
-                    <li>Rewards</li>
+                    <li>
+                      <Button
+                        variant="contained"
+                        className="btn"
+                        name="schoolWork"
+                        onClick={() => setbtnName("schoolWork")}
+                      >
+                        School Work
+                      </Button>
+                      <br />
+                    </li>
+                    <li>
+                      <Button
+                        variant="contained"
+                        className="btn"
+                        name="schoresk"
+                        onClick={() => setbtnName("chores")}
+                      >
+                        Chores
+                      </Button>
+                      <br />
+                    </li>
+                    <li>
+                      <Button
+                        variant="contained"
+                        className="btn"
+                        name="rewards"
+                        onClick={() => setbtnName("rewards")}
+                      >
+                        Rewards
+                      </Button>
+                    </li>
                   </ul>
                 </Paper>
               </Grid>
               <Grid item xs={6} sm={9}>
                 <Paper className={classes.paper}>
-                  <Chores />
+                  {btnName === "schoolWork" && <SchoolTasks />}
+                  {btnName === "chores" && <Chores />}
+                  {btnName === "rewards" && <Rewards />}
+                  {btnName === "default" && <SchoolTasks />}
                 </Paper>
               </Grid>
             </Grid>
