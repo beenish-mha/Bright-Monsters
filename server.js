@@ -17,7 +17,8 @@ app.use(routes);
 mongoose
   .connect(
     process.env.MONGODB_URI ||
-      "mongodb+srv://beenish:Beeproject3@cluster0-ncqma.mongodb.net/test?retryWrites=true&w=majority"
+      "mongodb+srv://beenish:Beeproject3@cluster0-ncqma.mongodb.net/test?retryWrites=true&w=majority",
+    { useUnifiedTopology: true, useNewUrlParser: true }
   )
   .then(() => console.log("MongooDB connected"))
   .catch((err) => console.log(err));
