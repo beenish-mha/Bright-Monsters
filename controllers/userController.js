@@ -10,17 +10,21 @@ module.exports = {
 
   //find the right kid with user email
 
-  findKid: function (req, res) {
-    User.findOne({ email: req.params.name })
+  // findKid: function (req, res) {
+  //   User.findOne({ email: req.params.name }, {
+  //     $set:{kids:[schoolTasks]}
+  //   })
+  //     .then((dbUser) => res.json(dbUser))
+  //     .catch((err) => res.status(422).json(err));
+  // },
+
+  findByEmail: function (req, res) {
+    User.findOne({ email: req.params.email }
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));
   },
 
-  findByEmail: function (req, res) {
-    User.findOne({ email: req.params.email })
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
-  },
+
   create: function (req, res) {
     User.create(req.body)
       .then((dbUser) => res.json(dbUser))

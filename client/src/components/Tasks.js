@@ -3,7 +3,7 @@ import SchoolTasks from "./SchoolTasks";
 import Chores from "./Chores";
 import Rewards from "./Rewards";
 import NavBar from "./NavBar";
-import { makeStyles, Paper, Grid, Button } from "@material-ui/core";
+import { makeStyles, Paper, Grid } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";

@@ -2,12 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schoolTasksSchema = new Schema({
-  schoolTaskId: Number,
   task: String,
 });
 
 const choresSchema = new Schema({
-  choresId: Number,
   chore: String,
 });
 
