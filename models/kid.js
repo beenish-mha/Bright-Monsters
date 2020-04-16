@@ -6,7 +6,7 @@ const kidSchema = new Schema({
   age: { type: Number },
   user: { type: Schema.Types.ObjectId, ref: "user" },
   schoolTasks: [{ type: Schema.Types.ObjectId, ref: "schoolTask" }],
-  chores: [{ type: Schema.Types.ObjectId, ref: "Chore" }],
+  chores: [{ type: Schema.Types.ObjectId, ref: "chore" }],
 });
 
 const Kid = mongoose.model("kid", kidSchema);

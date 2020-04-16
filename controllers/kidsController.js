@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Kid = require("../models/kid");
 const SchoolTask = require("../models/schoolTask");
+const Chore = require("../models/chore");
 
 module.exports = {
   findAll: async (req, res, next) => {
@@ -29,5 +30,22 @@ module.exports = {
     const { kidId } = req.params;
     const kid = await Kid.findById(kidId).populate("schoolTasks");
     res.status(200).json(kid.schoolTasks);
+  },
+
+  newkidChores: async (req, res, next) => {
+    const { kidId } = req.params;
+    const newChore = new Chore(req.body);
+    const kid = await Kid.findById(kidId);
+    newChore.kid = kid;
+    await newChore.save();
+    kid.chores.push(newChore);
+    await kid.save();
+    res.status(201).json(newChore);
+  },
+
+  getkidChores: async (req, res, next) => {
+    const { kidId } = req.params;
+    const kid = await Kid.findById(kidId).populate("chores");
+    res.status(200).json(kid.chores);
   },
 };

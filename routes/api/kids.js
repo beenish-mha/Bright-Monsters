@@ -15,9 +15,9 @@ router
   .post(kidsController.newkidSchoolWork);
 
 // //match with "/api/kids/:kidsId/chores"
-// router
-//   .route("/:kidId/chores")
-//   .get(userController.getkidChores)
-//   .post(userController.newkidChores);
+router
+  .route("/:kidId/chores")
+  .get(kidsController.getkidChores)
+  .post(kidsController.newkidChores);
 
 module.exports = router;

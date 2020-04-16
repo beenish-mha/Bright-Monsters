@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const choreSchema = new Schema({
   chore: { type: String },
-  kid: { type: Schema.Types.ObjectId, ref: "Kid" },
+  kid: { type: Schema.Types.ObjectId, ref: "kid" },
 });
 
-module.exports = mongoose.model("Chore", choreSchema);
+module.exports = mongoose.model("chore", choreSchema);
