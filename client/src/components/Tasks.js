@@ -56,7 +56,7 @@ function Tasks(props) {
         </Grid>
         <Grid item xs={6} sm={10}>
           <Paper className={classes.paper}>
-            <h5>{child.name}</h5>
+            <h5>Hello {child.name}!</h5>
             <Grid container spacing={2}>
               <Grid item xs={6} sm={3}>
                 <Paper className={classes.paper}>

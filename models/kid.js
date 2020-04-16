@@ -7,6 +7,7 @@ const kidSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "user" },
   schoolTasks: [{ type: Schema.Types.ObjectId, ref: "schoolTask" }],
   chores: [{ type: Schema.Types.ObjectId, ref: "chore" }],
+  rewards: Number,
 });
 
 const Kid = mongoose.model("kid", kidSchema);
