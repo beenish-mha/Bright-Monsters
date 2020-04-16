@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SchoolTasks from "./SchoolTasks";
 import Chores from "./Chores";
 import Rewards from "./Rewards";
@@ -28,18 +28,11 @@ const useStyle = makeStyles((theme) => ({
 function Tasks(props) {
   const child = props.location.aboutProps;
   const userEmail = child.email;
+  const kidId = child.kidId;
   const classes = useStyle();
   const [btnName, setbtnName] = useState("default");
-  const [user, setuser] = useState([{}]);
 
-  useEffect(() => {
-    // API.getUserByEmail(userEmail).then((res) => {
-    //   console.log(res);
-    //   const kidsArray = res.data.kids;
-    //   console.log("Hello" + kidsArray[0].name);
-    //   // setuser(res.data.kids);
-    // });
-  }, []);
+  //console.log(child.name, kidId);
 
   return (
     <div className={classes.root}>
@@ -99,10 +92,14 @@ function Tasks(props) {
               </Grid>
               <Grid item xs={6} sm={9}>
                 <Paper className={classes.paper}>
-                  {btnName === "schoolWork" && <SchoolTasks />}
+                  {btnName === "schoolWork" && (
+                    <SchoolTasks kidName={child.name} kidId={kidId} />
+                  )}
                   {btnName === "chores" && <Chores />}
                   {btnName === "rewards" && <Rewards />}
-                  {btnName === "default" && <SchoolTasks />}
+                  {btnName === "default" && (
+                    <SchoolTasks kidName={child.name} kidId={kidId} />
+                  )}
                 </Paper>
               </Grid>
             </Grid>

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import API from "../utils/Api";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -16,8 +17,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SchoolTasks() {
+function SchoolTasks(props) {
+  let kidId = props.kidId;
+  const [kidSWArray, setKidSWArray] = useState([{}]);
+  useEffect(() => {
+    console.log("this is school task page", props.kidName, kidId);
+    API.getKidSchoolTask(kidId).then((res) => {
+      // console.log(res.data[0].task);
+      setKidSWArray(res.data);
+    });
+  }, []);
+  console.log("this is useState", kidSWArray[0].task);
   const classes = useStyles();
+  let i = 1;
   return (
     <div>
       <h4>School Work</h4>
@@ -28,61 +40,14 @@ function SchoolTasks() {
             id="outlined-basic"
             variant="outlined"
           />
-          <div className={classes.btnRoot}>
-            <Button variant="contained">Add</Button>
-            <Button variant="contained">Delete</Button>
-            <Button variant="contained">Get Reward</Button>
-          </div>
+          <Button>Add your school work</Button>
         </form>
-
-        <form>
-          <TextField
-            className={classes.root}
-            id="outlined-basic"
-            variant="outlined"
-          />
-          <div className={classes.btnRoot}>
-            <Button variant="contained">Add</Button>
-            <Button variant="contained">Delete</Button>
-            <Button variant="contained">Get Reward</Button>
-          </div>
-        </form>
-        <form>
-          <TextField
-            className={classes.root}
-            id="outlined-basic"
-            variant="outlined"
-          />
-          <div className={classes.btnRoot}>
-            <Button variant="contained">Add</Button>
-            <Button variant="contained">Delete</Button>
-            <Button variant="contained">Get Reward</Button>
-          </div>
-        </form>
-        <form>
-          <TextField
-            className={classes.root}
-            id="outlined-basic"
-            variant="outlined"
-          />
-          <div className={classes.btnRoot}>
-            <Button variant="contained">Add</Button>
-            <Button variant="contained">Delete</Button>
-            <Button variant="contained">Get Reward</Button>
-          </div>
-        </form>
-        <form>
-          <TextField
-            className={classes.root}
-            id="outlined-basic"
-            variant="outlined"
-          />
-          <div className={classes.btnRoot}>
-            <Button variant="contained">Add</Button>
-            <Button variant="contained">Delete</Button>
-            <Button variant="contained">Get Reward</Button>
-          </div>
-        </form>
+        <br />
+        <ul>
+          {kidSWArray.map((swArray) => (
+            <li key={(i = i + 1)}>{swArray.task}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
