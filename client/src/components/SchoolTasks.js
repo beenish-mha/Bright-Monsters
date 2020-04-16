@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
 function SchoolTasks(props) {
   let kidId = props.kidId;
   const [kidSWArray, setKidSWArray] = useState([{}]);
+  const [values, setValues] = useState({});
+  const [newValue, setnewValue] = useState("");
+  const classes = useStyles();
+  let i = 1;
+
   useEffect(() => {
     console.log("this is school task page", props.kidName, kidId);
     API.getKidSchoolTask(kidId).then((res) => {
@@ -27,20 +32,46 @@ function SchoolTasks(props) {
       setKidSWArray(res.data);
     });
   }, []);
-  console.log("this is useState", kidSWArray[0].task);
-  const classes = useStyles();
-  let i = 1;
+
+  const handleChange = (event) => {
+    event.persist();
+    setValues((values) => ({
+      ...values,
+      [event.target.name]: event.target.value,
+    }));
+    setnewValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    API.saveSchoolWork({
+      task: newValue,
+      kidId: kidId,
+    }).then((response) => {
+      console.log("task added");
+    });
+  };
+
+  console.log("hi", newValue);
   return (
     <div>
       <h4>School Work</h4>
       <div>
-        <form>
+        <form
+          onSubmit={handleSubmit}
+          className="form"
+          noValidate
+          autoComplete="off"
+        >
           <TextField
             className={classes.root}
             id="outlined-basic"
             variant="outlined"
+            value={values.name}
+            name="schoolWork"
+            onChange={handleChange}
           />
-          <Button>Add your school work</Button>
+          <button className="btn">Add your school work</button>
         </form>
         <br />
         <ul>

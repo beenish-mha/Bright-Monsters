@@ -22,4 +22,8 @@ export default {
   getKidSchoolTask: function (kidId) {
     return axios.get("/api/kids/" + kidId + "/schoolWork");
   },
+
+  saveSchoolWork: function (data) {
+    return axios.post("api/kids/" + data.kidId + "/schoolWork", data);
+  },
 };
