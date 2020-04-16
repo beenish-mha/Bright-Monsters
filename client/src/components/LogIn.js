@@ -33,9 +33,10 @@ class LogIn extends React.Component {
       //console.log("this is user" + this.state.user.name);
       if (this.state.user.password === this.state.password) {
         this.state.addChild = true;
-        console.log("password match");
+        console.log("password match", this.state.user._id);
         this.props.history.push("/AddChildSelectChild", {
           email: this.state.email,
+          userId: this.state.user._id,
         });
       } else {
         alert("please try your password again");

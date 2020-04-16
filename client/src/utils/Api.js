@@ -12,9 +12,10 @@ export default {
   },
 
   getUserByEmail: function (email) {
-    return axios.get("api/users/" + email);
+    return axios.get("api/users/email/" + email);
   },
-  updateUserByEmail: function (data) {
-    return axios.put("api/users/update/", data);
+
+  newUserKid: function (data) {
+    return axios.post("api/users/" + data.userId + "/kids", data);
   },
 };

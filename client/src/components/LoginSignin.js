@@ -19,6 +19,9 @@ const useStyle = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     //backgroundImage: "url(${client/public/assets/h2backgtound.jfif})",
   },
+  btn: {
+    margin: theme.spacing(1),
+  },
 }));
 
 function LoginSignin(props) {
@@ -43,7 +46,7 @@ function LoginSignin(props) {
           <Paper className={classes.paper}>
             <Button
               variant="contained"
-              className="btn"
+              className={classes.btn}
               name="logIn"
               onClick={() => setbtnName("logIn")}
             >
@@ -51,7 +54,7 @@ function LoginSignin(props) {
             </Button>
             <Button
               variant="contained"
-              className="btn"
+              className={classes.btn}
               name="signIn"
               onClick={() => setbtnName("signIn")}
             >
