@@ -49,6 +49,13 @@ module.exports = {
     res.status(200).json(user.kids);
   },
 
+  getUserKidsByEmail: async (req, res, next) => {
+    const { email } = req.params;
+    const user = await User.findOne({ email: email }).populate("kids");
+    console.log("user", user);
+    res.status(200).json(user.kids);
+  },
+
   // remove: function (req, res) {
   //   User.findOne({ email: req.params.email })
   //     .then((dbUser) => dbUser.remove())

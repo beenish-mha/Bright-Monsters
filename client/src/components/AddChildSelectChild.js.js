@@ -25,6 +25,7 @@ function AddChildSelectChild(props) {
   }
 
   const email = props.location.state.email;
+  const userId = props.location.state.userId;
 
   return (
     <div className={classes.root}>
@@ -44,12 +45,12 @@ function AddChildSelectChild(props) {
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
-                  <SelectChild email={email} />
+                  <SelectChild email={email} userId={userId} />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>
-                  <AddChild email={email} />
+                  <AddChild email={email} userId={userId} />
                 </Paper>
               </Grid>
             </Grid>

@@ -14,7 +14,7 @@ class SelectChild extends React.Component {
   state = {
     email: this.props.email,
     parentName: "",
-    user: [],
+    user: [{}],
   };
 
   componentDidMount() {
@@ -22,9 +22,9 @@ class SelectChild extends React.Component {
       console.log(res);
       this.setState({
         user: res.data.kids,
-        parentName: res.data.name,
+        parentName: res.data.Name,
       });
-      //console.log("Hello" + this.state.user[0].name);
+      //console.log("Hello selectChild  ", this.state.user[0].name);
     });
   }
 
@@ -42,13 +42,14 @@ class SelectChild extends React.Component {
                 to={{
                   pathname: "/Tasks",
                   aboutProps: {
-                    name: kids.name,
+                    name: kids.Name,
                     age: kids.age,
                     email: this.state.email,
+                    kidId: kids._id,
                   },
                 }}
               >
-                <ListItemText primary={kids.name} />
+                <ListItemText primary={kids.Name} />
               </Link>
             </ListItem>
           ))}

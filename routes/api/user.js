@@ -13,6 +13,8 @@ router.route("/email/:email").get(userController.findByEmail);
 // .put(userController.update)
 // .delete(userController.remove);
 
+router.route("/email/:email").get(userController.getUserKidsByEmail);
+
 router
   .route("/:userId/kids")
   .get(userController.getUserKids)

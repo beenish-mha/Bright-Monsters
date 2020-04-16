@@ -9,15 +9,17 @@ class AddChild extends React.Component {
   state = {
     childName: "",
     email: this.props.email,
+    userId: this.props.userId,
     childAge: "",
   };
 
   submit = (event) => {
     event.preventDefault();
 
-    API.updateUserByEmail({
-      name: this.state.childName,
+    API.newUserKid({
+      Name: this.state.childName,
       email: this.state.email,
+      userId: this.state.userId,
       age: this.state.childAge,
     })
       .then((response) => {

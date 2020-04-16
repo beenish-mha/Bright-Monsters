@@ -10,20 +10,23 @@ class SignIn extends React.Component {
     name: "",
     email: "",
     password: "",
+    userId: "",
   };
 
   submit = (event) => {
     event.preventDefault();
 
     API.saveUser({
-      name: this.state.name,
+      Name: this.state.name,
       email: this.state.email,
       password: this.state.password,
     })
       .then((response) => {
         //window.location.reload();
+        console.log("after sign in", response.data._id);
         this.props.history.push("/AddChildSelectChild", {
           email: this.state.email,
+          userId: response.data._id,
         });
       })
       .catch((err) => console.log(err));
