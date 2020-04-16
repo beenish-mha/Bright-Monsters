@@ -1,34 +1,25 @@
-const User = require("../models/bright-monster");
+const User = require("../models/user");
+const Kid = require("../models/kid");
 
 // Defining methods for the userController
 module.exports = {
-  findAll: function (req, res) {
-    User.find(req.query)
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
+  findAll: async (req, res, next) => {
+    const user = await User.find({});
+    res.status(200).json(user);
   },
 
-  //find the right kid with user email
-
-  // findKid: function (req, res) {
-  //   User.findOne({ email: req.params.name }, {
-  //     $set:{kids:[schoolTasks]}
-  //   })
-  //     .then((dbUser) => res.json(dbUser))
-  //     .catch((err) => res.status(422).json(err));
-  // },
-
-  findByEmail: function (req, res) {
-    User.findOne({ email: req.params.email }
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
+  //creating new user
+  create: async (req, res, next) => {
+    const newUser = new User(req.body);
+    const user = await newUser.save();
+    res.status(201).json(user);
   },
 
-
-  create: function (req, res) {
-    User.create(req.body)
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
+  //find user by email
+  findByEmail: async (req, res, next) => {
+    const { email } = req.params;
+    const user = await User.findOne({ email: email });
+    res.status(200).json(user);
   },
 
   update: function (req, res) {
@@ -39,6 +30,18 @@ module.exports = {
           kids: [{ name: req.body.name, age: req.body.age }],
         },
       }
+    )
+      .then((dbUser) => res.json(dbUser))
+      .catch((err) => res.status(422).json(err));
+  },
+
+  updateKids: function (req, res) {
+    User.findOneAndUpdate(
+      {
+        email: req.params.email,
+        kids$name: req.params.name,
+      },
+      { $set: { "kids.$.schoolTasks": req.body.task } }
     )
       .then((dbUser) => res.json(dbUser))
       .catch((err) => res.status(422).json(err));

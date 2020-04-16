@@ -41,7 +41,11 @@ class SelectChild extends React.Component {
               <Link
                 to={{
                   pathname: "/Tasks",
-                  aboutProps: { name: kids.name, age: kids.age },
+                  aboutProps: {
+                    name: kids.name,
+                    age: kids.age,
+                    email: this.state.email,
+                  },
                 }}
               >
                 <ListItemText primary={kids.name} />
