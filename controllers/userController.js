@@ -18,10 +18,23 @@ module.exports = {
   //find user by email
   findByEmail: async (req, res, next) => {
     const { email } = req.params;
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email }).populate("kid");
     res.status(200).json(user);
   },
 
+  //post new kid
+  newUserKid: async (req, res, next) => {
+    const { email } = req.params;
+    const newKid = new Kid(req.body);
+    const user = await User.findOne({ email: email });
+    newKid.user = user;
+    await newKid.save();
+    user.kids.push(newKid);
+    await user.save;
+    res.status(201).json(newKid);
+  },
+
+  //
   update: function (req, res) {
     User.updateOne(
       { email: req.body.email },
