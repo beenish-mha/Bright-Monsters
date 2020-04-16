@@ -49,32 +49,6 @@ module.exports = {
     res.status(200).json(user.kids);
   },
 
-  //
-  // update: function (req, res) {
-  //   User.updateOne(
-  //     { email: req.body.email },
-  //     {
-  //       $push: {
-  //         kids: [{ name: req.body.name, age: req.body.age }],
-  //       },
-  //     }
-  //   )
-  //     .then((dbUser) => res.json(dbUser))
-  //     .catch((err) => res.status(422).json(err));
-  // },
-
-  // updateKids: function (req, res) {
-  //   User.findOneAndUpdate(
-  //     {
-  //       email: req.params.email,
-  //       kids$name: req.params.name,
-  //     },
-  //     { $set: { "kids.$.schoolTasks": req.body.task } }
-  //   )
-  //     .then((dbUser) => res.json(dbUser))
-  //     .catch((err) => res.status(422).json(err));
-  // },
-
   // remove: function (req, res) {
   //   User.findOne({ email: req.params.email })
   //     .then((dbUser) => dbUser.remove())

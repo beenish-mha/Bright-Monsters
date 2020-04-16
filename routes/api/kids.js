@@ -9,10 +9,10 @@ router.route("/").get(kidsController.findAll);
 router.route("/:kidId").get(kidsController.findKidById);
 
 //match with "/api/kids/:kidsId/schoolWork"
-// router
-//   .route("/:kidId/schoolWork")
-//   .get(userController.getkidSchoolWork)
-//   .post(userController.newkidSchoolWork);
+router
+  .route("/:kidId/schoolWork")
+  //   .get(userController.getkidSchoolWork)
+  .post(kidsController.newkidSchoolWork);
 
 // //match with "/api/kids/:kidsId/chores"
 // router
