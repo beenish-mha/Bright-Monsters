@@ -11,7 +11,7 @@ router.route("/:kidId").get(kidsController.findKidById);
 //match with "/api/kids/:kidsId/schoolWork"
 router
   .route("/:kidId/schoolWork")
-  //   .get(userController.getkidSchoolWork)
+  .get(kidsController.getkidSchoolWork)
   .post(kidsController.newkidSchoolWork);
 
 // //match with "/api/kids/:kidsId/chores"

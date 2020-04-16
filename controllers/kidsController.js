@@ -24,4 +24,10 @@ module.exports = {
     await kid.save();
     res.status(201).json(newSchoolTask);
   },
+
+  getkidSchoolWork: async (req, res, next) => {
+    const { kidId } = req.params;
+    const kid = await Kid.findById(kidId).populate("schoolTasks");
+    res.status(200).json(kid.schoolTasks);
+  },
 };
