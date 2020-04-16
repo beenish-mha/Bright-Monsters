@@ -4,11 +4,12 @@ const bodyParser = require("body-parser");
 const routes = require("./routes/index");
 const app = express();
 const PORT = process.env.PORT || 5000;
+mongoose.Promise = global.Promise;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 app.use(express.static("client/build"));
 
@@ -24,6 +25,7 @@ mongoose
   .catch((err) => console.log(err));
 
 mongoose.set("useNewUrlParser", true);
+mongoose.set("useCreateIndex", true);
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));

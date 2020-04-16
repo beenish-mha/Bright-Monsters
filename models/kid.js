@@ -4,9 +4,10 @@ const Schema = mongoose.Schema;
 const kidSchema = new Schema({
   Name: { type: String, required: true },
   age: { type: Number },
-  user: { type: Schema.Types.ObjectId, ref: "User" },
+  user: { type: Schema.Types.ObjectId, ref: "user" },
   schoolTasks: [{ type: Schema.Types.ObjectId, ref: "SchoolTask" }],
-  chores: [{ type: Schema.Types.ObjectId, ref: "Chores" }],
+  chores: [{ type: Schema.Types.ObjectId, ref: "Chore" }],
 });
 
-module.exports = mongoose.model("Kid", kidSchema);
+const Kid = mongoose.model("kid", kidSchema);
+module.exports = Kid;

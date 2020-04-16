@@ -15,55 +15,70 @@ module.exports = {
     res.status(201).json(user);
   },
 
-  //find user by email
-  findByEmail: async (req, res, next) => {
-    const { email } = req.params;
-    const user = await User.findOne({ email: email }).populate("kid");
+  //find user by userId
+  findUserById: async (req, res, next) => {
+    const { userId } = req.params;
+    const user = await User.findById(userId).populate("kids");
     res.status(200).json(user);
   },
 
-  //post new kid
-  newUserKid: async (req, res, next) => {
+  //find user by email
+  findByEmail: async (req, res, next) => {
     const { email } = req.params;
+    const user = await User.findOne({ email: email }).populate("kids");
+    res.status(200).json(user);
+  },
+
+  //post new kid by userId
+  newUserKid: async (req, res, next) => {
+    const { userId } = req.params;
     const newKid = new Kid(req.body);
-    const user = await User.findOne({ email: email });
+    const user = await User.findById(userId);
     newKid.user = user;
     await newKid.save();
     user.kids.push(newKid);
-    await user.save;
+    await user.save();
     res.status(201).json(newKid);
   },
 
+  //getUser Kids by userid
+  getUserKids: async (req, res, next) => {
+    const { userId } = req.params;
+    const user = await User.findById(userId).populate("kids");
+    console.log("user", user);
+    res.status(200).json(user.kids);
+  },
+
   //
-  update: function (req, res) {
-    User.updateOne(
-      { email: req.body.email },
-      {
-        $push: {
-          kids: [{ name: req.body.name, age: req.body.age }],
-        },
-      }
-    )
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
-  },
+  // update: function (req, res) {
+  //   User.updateOne(
+  //     { email: req.body.email },
+  //     {
+  //       $push: {
+  //         kids: [{ name: req.body.name, age: req.body.age }],
+  //       },
+  //     }
+  //   )
+  //     .then((dbUser) => res.json(dbUser))
+  //     .catch((err) => res.status(422).json(err));
+  // },
 
-  updateKids: function (req, res) {
-    User.findOneAndUpdate(
-      {
-        email: req.params.email,
-        kids$name: req.params.name,
-      },
-      { $set: { "kids.$.schoolTasks": req.body.task } }
-    )
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
-  },
+  // updateKids: function (req, res) {
+  //   User.findOneAndUpdate(
+  //     {
+  //       email: req.params.email,
+  //       kids$name: req.params.name,
+  //     },
+  //     { $set: { "kids.$.schoolTasks": req.body.task } }
+  //   )
+  //     .then((dbUser) => res.json(dbUser))
+  //     .catch((err) => res.status(422).json(err));
+  // },
 
-  remove: function (req, res) {
-    User.findOne({ email: req.params.email })
-      .then((dbUser) => dbUser.remove())
-      .then((dbUser) => res.json(dbUser))
-      .catch((err) => res.status(422).json(err));
-  },
+  // remove: function (req, res) {
+  //   User.findOne({ email: req.params.email })
+  //     .then((dbUser) => dbUser.remove())
+  //     .then((dbUser) => res.json(dbUser))
+  //     .catch((err) => res.status(422).json(err));
+  // },
 };
