@@ -9,7 +9,7 @@ router.route("/").get(userController.findAll).post(userController.create);
 router.route("/:userId").get(userController.findUserById);
 
 // Matches with "/api/user/:email"
-router.route("/:email").get(userController.findByEmail);
+router.route("/email/:email").get(userController.findByEmail);
 // .put(userController.update)
 // .delete(userController.remove);
 

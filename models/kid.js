@@ -5,7 +5,7 @@ const kidSchema = new Schema({
   Name: { type: String, required: true },
   age: { type: Number },
   user: { type: Schema.Types.ObjectId, ref: "user" },
-  schoolTasks: [{ type: Schema.Types.ObjectId, ref: "SchoolTask" }],
+  schoolTasks: [{ type: Schema.Types.ObjectId, ref: "schoolTask" }],
   chores: [{ type: Schema.Types.ObjectId, ref: "Chore" }],
 });
 
