@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+
 import Button from "@material-ui/core/Button";
 import API from "../utils/Api";
 const useStyles = makeStyles((theme) => ({
@@ -22,13 +23,13 @@ function SchoolTasks(props) {
   const [kidSWArray, setKidSWArray] = useState([{}]);
   const [values, setValues] = useState({});
   const [newValue, setnewValue] = useState("");
+  const [schoolWorkId, setschoolWorkId] = useState("");
   const classes = useStyles();
   let i = 1;
 
   useEffect(() => {
     console.log("this is school task page", props.kidName, kidId);
     API.getKidSchoolTask(kidId).then((res) => {
-      // console.log(res.data[0].task);
       setKidSWArray(res.data);
     });
   }, []);
@@ -48,11 +49,24 @@ function SchoolTasks(props) {
       task: newValue,
       kidId: kidId,
     }).then((response) => {
-      console.log("task added");
+      console.log("school Task saved  ", response.data);
     });
   };
 
-  console.log("hi", newValue);
+  const doneHandleCkick = (event) => {
+    event.preventDefault();
+    const taskId = event.target.id;
+  };
+
+  const deleteHandleCkick = (event) => {
+    event.preventDefault();
+    const taskId = event.target.id;
+  };
+
+  const rewardHandleCkick = (event) => {
+    event.preventDefault();
+    const kidId = event.target.id;
+  };
   return (
     <div>
       <h4>School Work</h4>
@@ -76,7 +90,33 @@ function SchoolTasks(props) {
         <br />
         <ul>
           {kidSWArray.map((swArray) => (
-            <li key={(i = i + 1)}>{swArray.task}</li>
+            <div>
+              <li key={(i = i + 1)} value={swArray._id}>
+                {swArray.task}
+              </li>
+              <button
+                className="button taskBtn"
+                id={swArray._id}
+                onClick={doneHandleCkick}
+              >
+                Done
+              </button>
+              <button
+                className="button taskBtn"
+                id={swArray._id}
+                onClick={deleteHandleCkick}
+              >
+                Delete
+              </button>
+              <button
+                className="button taskBtn"
+                id={kidId}
+                onClick={rewardHandleCkick}
+              >
+                Reward
+              </button>
+              <hr />
+            </div>
           ))}
         </ul>
       </div>
