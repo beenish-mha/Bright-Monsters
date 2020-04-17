@@ -1,4 +1,3 @@
-// const router = require("express").Router();
 const router = require("express-promise-router")();
 const schoolTaskController = require("../../controllers/schoolTaskController");
 
@@ -9,6 +8,6 @@ router.route("/").get(schoolTaskController.findAll);
 router
   .route("/:schoolTaskId")
   .get(schoolTaskController.findschoolTaskById)
-  .delete(schoolTaskController.delete);
+  .delete(schoolTaskController.deleteTaskById);
 
 module.exports = router;
