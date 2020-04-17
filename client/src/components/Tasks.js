@@ -83,7 +83,9 @@ function Tasks(props) {
                   {btnName === "schoolWork" && (
                     <SchoolTasks kidName={child.name} kidId={kidId} />
                   )}
-                  {btnName === "chores" && <Chores />}
+                  {btnName === "chores" && (
+                    <Chores kidName={child.name} kidId={kidId} />
+                  )}
 
                   {btnName === "default" && (
                     <SchoolTasks kidName={child.name} kidId={kidId} />

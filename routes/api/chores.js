@@ -6,8 +6,8 @@ router.route("/").get(choresController.findAll);
 
 //matches with "/api/chores/:choresId"
 router
-  .route("/:choresId")
-  .get(choresController.findchoreById)
+  .route("/:choreId")
+  .get(choresController.findChoreById)
   .delete(choresController.deleteChoreById);
 
 module.exports = router;

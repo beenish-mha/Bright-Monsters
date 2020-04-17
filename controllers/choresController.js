@@ -5,7 +5,7 @@ module.exports = {
     const chore = await Chore.find({});
     res.status(200).json(chore);
   },
-  findchoreById: async (req, res, next) => {
+  findChoreById: async (req, res, next) => {
     const { choreId } = req.params;
     const chore = await Chore.findById(choreId);
     res.status(200).json(chore);

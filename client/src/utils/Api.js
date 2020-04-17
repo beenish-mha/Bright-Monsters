@@ -29,4 +29,13 @@ export default {
   deleteSchoolWork: function (schoolTaskId) {
     return axios.delete("/api/schoolTask/" + schoolTaskId);
   },
+  getKidChore: function (kidId) {
+    return axios.get("/api/kids/" + kidId + "/chores");
+  },
+  saveChore: function (data) {
+    return axios.post("api/kids/" + data.kidId + "/chores", data);
+  },
+  deleteChores: function (choreId) {
+    return axios.delete("/api/chores/" + choreId);
+  },
 };
