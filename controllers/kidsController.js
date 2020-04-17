@@ -1,4 +1,3 @@
-const User = require("../models/user");
 const Kid = require("../models/kid");
 const SchoolTask = require("../models/schoolTask");
 const Chore = require("../models/chore");

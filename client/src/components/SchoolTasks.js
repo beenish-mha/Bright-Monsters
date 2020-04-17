@@ -53,14 +53,17 @@ function SchoolTasks(props) {
     });
   };
 
-  const doneHandleCkick = (event) => {
+  const doneHandleClick = (event) => {
     event.preventDefault();
     const taskId = event.target.id;
   };
 
-  const deleteHandleCkick = (event) => {
+  const deleteHandleClick = (event) => {
     event.preventDefault();
     const taskId = event.target.id;
+    API.deleteSchoolWork(taskId).then((response) => {
+      console.log("school Task remove ", response.data);
+    });
   };
 
   return (
@@ -91,14 +94,14 @@ function SchoolTasks(props) {
               <button
                 className="button taskBtn"
                 id={swArray._id}
-                onClick={doneHandleCkick}
+                onClick={doneHandleClick}
               >
                 Done
               </button>
               <button
                 className="button taskBtn"
                 id={swArray._id}
-                onClick={deleteHandleCkick}
+                onClick={deleteHandleClick}
               >
                 Delete
               </button>

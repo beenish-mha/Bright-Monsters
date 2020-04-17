@@ -26,4 +26,7 @@ export default {
   saveSchoolWork: function (data) {
     return axios.post("api/kids/" + data.kidId + "/schoolWork", data);
   },
+  deleteSchoolWork: function (schoolTaskId) {
+    return axios.delete("/api/schoolTask/" + schoolTaskId);
+  },
 };
