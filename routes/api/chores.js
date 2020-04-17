@@ -1,4 +1,3 @@
-// const router = require("express").Router();
 const router = require("express-promise-router")();
 const choresController = require("../../controllers/choresController");
 
@@ -7,8 +6,8 @@ router.route("/").get(choresController.findAll);
 
 //matches with "/api/chores/:choresId"
 router
-  .route("/:choresId")
-  .get(choresController.findchoresById)
-  .delete(choresController.delete);
+  .route("/:choreId")
+  .get(choresController.findChoreById)
+  .delete(choresController.deleteChoreById);
 
 module.exports = router;
