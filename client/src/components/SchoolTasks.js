@@ -63,10 +63,6 @@ function SchoolTasks(props) {
     const taskId = event.target.id;
   };
 
-  const rewardHandleCkick = (event) => {
-    event.preventDefault();
-    const kidId = event.target.id;
-  };
   return (
     <div>
       <h4>School Work</h4>
@@ -90,10 +86,8 @@ function SchoolTasks(props) {
         <br />
         <ul>
           {kidSWArray.map((swArray) => (
-            <div>
-              <li key={(i = i + 1)} value={swArray._id}>
-                {swArray.task}
-              </li>
+            <div key={(i = i + 1)}>
+              <li value={swArray._id}>{swArray.task}</li>
               <button
                 className="button taskBtn"
                 id={swArray._id}
@@ -107,13 +101,6 @@ function SchoolTasks(props) {
                 onClick={deleteHandleCkick}
               >
                 Delete
-              </button>
-              <button
-                className="button taskBtn"
-                id={kidId}
-                onClick={rewardHandleCkick}
-              >
-                Reward
               </button>
               <hr />
             </div>

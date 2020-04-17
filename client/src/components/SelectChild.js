@@ -30,6 +30,8 @@ class SelectChild extends React.Component {
 
   render() {
     let parent = this.state.user;
+    let i = 1;
+
     return (
       <div>
         <h5>Hello {this.state.parentName}</h5> <br />
@@ -37,21 +39,23 @@ class SelectChild extends React.Component {
         <p>Select your kids to check their tasks</p>
         <List component="nav" aria-label="secondary mailbox folders">
           {parent.map((kids) => (
-            <ListItem button key={kids._id}>
-              <Link
-                to={{
-                  pathname: "/Tasks",
-                  aboutProps: {
-                    name: kids.Name,
-                    age: kids.age,
-                    email: this.state.email,
-                    kidId: kids._id,
-                  },
-                }}
-              >
-                <ListItemText primary={kids.Name} />
-              </Link>
-            </ListItem>
+            <div key={(i = i + 1)}>
+              <ListItem button>
+                <Link
+                  to={{
+                    pathname: "/Tasks",
+                    aboutProps: {
+                      name: kids.Name,
+                      age: kids.age,
+                      email: this.state.email,
+                      kidId: kids._id,
+                    },
+                  }}
+                >
+                  <ListItemText primary={kids.Name} />
+                </Link>
+              </ListItem>
+            </div>
           ))}
         </List>
       </div>
