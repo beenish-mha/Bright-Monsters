@@ -12,7 +12,7 @@ module.exports = {
   },
   deleteChoreById: async (req, res, next) => {
     const { choreId } = req.params;
-    SchoolTask.findById({ _id: choreId }).then((result) =>
+    Chore.findById({ _id: choreId }).then((result) =>
       result
         .remove()
         .then((result) => res.json(result))

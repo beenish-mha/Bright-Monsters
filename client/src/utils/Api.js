@@ -35,7 +35,7 @@ export default {
   saveChore: function (data) {
     return axios.post("api/kids/" + data.kidId + "/chores", data);
   },
-  deleteChores: function (choreId) {
+  deleteChore: function (choreId) {
     return axios.delete("/api/chores/" + choreId);
   },
 };
