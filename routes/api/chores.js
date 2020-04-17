@@ -5,7 +5,7 @@ const choresController = require("../../controllers/choresController");
 // Matches with "/api/chores"
 router.route("/").get(choresController.findAll);
 
-//matches with "/api/kids/:choresId"
+//matches with "/api/chores/:choresId"
 router
   .route("/:choresId")
   .get(choresController.findchoresById)
