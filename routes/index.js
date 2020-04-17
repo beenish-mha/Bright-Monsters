@@ -5,5 +5,7 @@ const kidsRouter = require("./api/kids");
 // API Routes
 router.use("/api/users", userRouter);
 router.use("/api/kids", kidsRouter);
+router.use("/api/schoolTask", schoolTaskRouter);
+router.use("/api/chores", choresRouter);
 
 module.exports = router;
