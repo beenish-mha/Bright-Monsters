@@ -19,12 +19,8 @@ const useStyle = makeStyles((theme) => ({
 
 function AddChildSelectChild(props) {
   const classes = useStyle();
-
-  if (!props.location.state.email) {
-    return <Redirect to="LoginSignin" />;
-  }
-
   const email = props.location.state.email;
+
   const userId = props.location.state.userId;
 
   return (

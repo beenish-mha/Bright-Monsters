@@ -22,7 +22,6 @@ class SignIn extends React.Component {
       password: this.state.password,
     })
       .then((response) => {
-        //window.location.reload();
         console.log("after sign in", response.data._id);
         this.props.history.push("/AddChildSelectChild", {
           email: this.state.email,

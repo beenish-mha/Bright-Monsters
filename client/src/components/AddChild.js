@@ -23,7 +23,7 @@ class AddChild extends React.Component {
       age: this.state.childAge,
     })
       .then((response) => {
-        //go to tasks page
+        window.location.reload(true);
       })
       .catch((err) => console.log(err));
   };

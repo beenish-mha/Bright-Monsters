@@ -2,7 +2,6 @@ import React from "react";
 
 import { TextField, Button } from "@material-ui/core";
 import API from "../utils/Api";
-import AddChildSelectChild from "./AddChildSelectChild.js";
 
 class LogIn extends React.Component {
   constructor(props) {
