@@ -21,26 +21,31 @@ class LogIn extends React.Component {
     let searchedUser = this.state.email;
     this.setState({});
 
-    API.getUserByEmail(searchedUser).then((res) => {
-      // console.log(res);
-      this.setState({
-        user: res.data,
-      });
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
-      //console.log("this is user" + this.state.user.name);
-      if (this.state.user.password === this.state.password) {
-        this.state.addChild = true;
-        console.log("password match", this.state.user._id);
-        this.props.history.push("/AddChildSelectChild", {
-          email: this.state.email,
-          userId: this.state.user._id,
+    API.getUserByEmail(searchedUser)
+      .then((res) => {
+        // console.log(res);
+        this.setState({
+          user: res.data,
         });
-      } else {
-        alert("please try your password again");
-      }
-    });
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
+        //console.log("this is user" + this.state.user.name);
+
+        if (this.state.user.password === this.state.password) {
+          this.state.addChild = true;
+          console.log("password match", this.state.user._id);
+          this.props.history.push("/AddChildSelectChild", {
+            email: this.state.email,
+            userId: this.state.user._id,
+          });
+        } else {
+          alert("please try your password again");
+        }
+      })
+      .catch((error) => {
+        alert("user can't found please sign in");
+      });
   };
 
   handleChange = ({ target }) => {

@@ -15,6 +15,15 @@ class SignIn extends React.Component {
 
   submit = (event) => {
     event.preventDefault();
+    if (this.state.name === "") {
+      alert("enter your name please");
+    }
+    if (this.state.email === "") {
+      alert("enter your email please");
+    }
+    if (this.state.password === "") {
+      alert("enter your password please");
+    }
 
     API.saveUser({
       Name: this.state.name,

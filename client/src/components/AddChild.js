@@ -15,6 +15,9 @@ class AddChild extends React.Component {
 
   submit = (event) => {
     event.preventDefault();
+    if (this.state.childName === "") {
+      alert("enter your child's name");
+    }
 
     API.newUserKid({
       Name: this.state.childName,

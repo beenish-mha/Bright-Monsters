@@ -13,7 +13,7 @@ function NavBar() {
           </Link>
 
           <Link to="/LoginSignin">
-            <li className="navLogin">Login</li>
+            <li className="navLogin">Login / Sign In</li>
             <br />
           </Link>
 
