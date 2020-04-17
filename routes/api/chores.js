@@ -5,9 +5,9 @@ const choresController = require("../../controllers/choresController");
 router.route("/").get(choresController.findAll);
 
 //matches with "/api/chores/:choresId"
-// router
-//   .route("/:choresId")
-//   .get(choresController.findchoresById)
-//   .delete(choresController.delete);
+router
+  .route("/:choresId")
+  .get(choresController.findchoreById)
+  .delete(choresController.deleteChoreById);
 
 module.exports = router;
