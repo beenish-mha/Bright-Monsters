@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-
+import { browserHistory } from "react-router";
 import Button from "@material-ui/core/Button";
 import API from "../utils/Api";
 const useStyles = makeStyles((theme) => ({
@@ -20,17 +20,19 @@ const useStyles = makeStyles((theme) => ({
 
 function Chores(props) {
   let kidId = props.kidId;
+  let email = props.email;
   const [kidCArray, setKidCArray] = useState([{}]);
   const [values, setValues] = useState({});
   const [newValue, setnewValue] = useState("");
   const [choreId, setchoreId] = useState("");
   const classes = useStyles();
   let i = 1;
+  let aboutProps = {};
 
   useEffect(() => {
     console.log("this is chores page", props.kidName, kidId);
     API.getKidChore(kidId).then((res) => {
-      setKidCArray(res.data);
+      setKidCArray(res.data.reverse());
     });
   }, []);
 
@@ -50,6 +52,11 @@ function Chores(props) {
       kidId: kidId,
     }).then((response) => {
       console.log("Chore saved  ", response.data);
+      API.getKidChore(kidId).then((res) => {
+        console.log('I am the res data:" ', res.data);
+        setKidCArray(res.data.reverse());
+        setnewValue("");
+      });
     });
   };
 
@@ -62,6 +69,11 @@ function Chores(props) {
     event.preventDefault();
     const choreId = event.target.id;
     API.deleteChore(choreId).then((response) => {
+      API.getKidChore(kidId).then((res) => {
+        console.log('I am the res data:" ', res.data);
+        setKidCArray(res.data.reverse());
+        setnewValue("");
+      });
       console.log("chore remove ", response.data);
     });
   };

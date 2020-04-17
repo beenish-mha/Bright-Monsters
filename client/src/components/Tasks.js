@@ -7,7 +7,6 @@ import { makeStyles, Paper, Grid } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import API from "../utils/Api";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -84,7 +83,12 @@ function Tasks(props) {
                     <SchoolTasks kidName={child.name} kidId={kidId} />
                   )}
                   {btnName === "chores" && (
-                    <Chores kidName={child.name} kidId={kidId} />
+                    <Chores
+                      kidName={child.name}
+                      kidId={kidId}
+                      email={userEmail}
+                      history={props.history}
+                    />
                   )}
 
                   {btnName === "default" && (
