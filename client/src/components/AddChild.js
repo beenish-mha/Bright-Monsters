@@ -1,11 +1,8 @@
 import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import API from "../utils/Api";
 
 class AddChild extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     childName: "",
     email: this.props.email,
@@ -15,6 +12,9 @@ class AddChild extends React.Component {
 
   submit = (event) => {
     event.preventDefault();
+    if (this.state.childName === "") {
+      alert("enter your child's name");
+    }
 
     API.newUserKid({
       Name: this.state.childName,
@@ -23,7 +23,7 @@ class AddChild extends React.Component {
       age: this.state.childAge,
     })
       .then((response) => {
-        //go to tasks page
+        window.location.reload(true);
       })
       .catch((err) => console.log(err));
   };

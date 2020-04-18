@@ -8,21 +8,25 @@ function NavBar() {
       <nav className="sideNavbar">
         <ul className="navMain">
           <Link to="/">
-            <li>Home</li>
+            <h4 style={{ color: "rgba(0, 0, 0, 0.54)" }}>Our Story</h4>
             <br />
           </Link>
 
           <Link to="/LoginSignin">
-            <li className="navLogin">Login</li>
+            <h4 style={{ color: "rgba(0, 0, 0, 0.54)" }} className="navLogin">
+              Login / Sign In
+            </h4>
             <br />
           </Link>
-          <Link to="/AddChildSelectChild">
-            <li className="navAddChild">Add your Child</li>
-            <br />
-          </Link>
-          <li className="curriculum">
-            <a href="https://www.gov.uk/national-curriculum">Curriculum</a>
-          </li>
+
+          <h4 className="curriculum">
+            <a
+              style={{ color: "rgba(0, 0, 0, 0.54)" }}
+              href="https://www.gov.uk/national-curriculum"
+            >
+              Curriculum
+            </a>
+          </h4>
         </ul>
       </nav>
     </div>

@@ -11,7 +11,12 @@ const useStyle = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    //backgroundImage: "url(${client/public/assets/h2backgtound.jfif})",
+  },
+  aboutUs: {
+    color: theme.palette.text.secondary,
+    height: 1356,
+
+    backgroundImage: `url(${"client.publicassets\bimg.jfif"})`,
   },
 }));
 
@@ -31,7 +36,7 @@ function Mainpage() {
           </Paper>
         </Grid>
         <Grid item xs={6} sm={9}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.aboutUs}>
             <AboutUs />
           </Paper>
         </Grid>

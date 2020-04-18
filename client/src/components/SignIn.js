@@ -1,11 +1,8 @@
 import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import API from "../utils/Api";
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     name: "",
     email: "",
@@ -15,6 +12,15 @@ class SignIn extends React.Component {
 
   submit = (event) => {
     event.preventDefault();
+    if (this.state.name === "") {
+      alert("enter your name please");
+    }
+    if (this.state.email === "") {
+      alert("enter your email please");
+    }
+    if (this.state.password === "") {
+      alert("enter your password please");
+    }
 
     API.saveUser({
       Name: this.state.name,
@@ -22,7 +28,6 @@ class SignIn extends React.Component {
       password: this.state.password,
     })
       .then((response) => {
-        //window.location.reload();
         console.log("after sign in", response.data._id);
         this.props.history.push("/AddChildSelectChild", {
           email: this.state.email,

@@ -1,19 +1,13 @@
 import React from "react";
 
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import API from "../utils/Api";
-import AddChildSelectChild from "./AddChildSelectChild.js";
 
 class LogIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     email: "",
     password: "",
     user: {},
-    addChild: false,
   };
 
   submit = (e) => {
@@ -22,26 +16,30 @@ class LogIn extends React.Component {
     let searchedUser = this.state.email;
     this.setState({});
 
-    API.getUserByEmail(searchedUser).then((res) => {
-      // console.log(res);
-      this.setState({
-        user: res.data,
-      });
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
-      //console.log("this is user" + this.state.user.name);
-      if (this.state.user.password === this.state.password) {
-        this.state.addChild = true;
-        console.log("password match", this.state.user._id);
-        this.props.history.push("/AddChildSelectChild", {
-          email: this.state.email,
-          userId: this.state.user._id,
+    API.getUserByEmail(searchedUser)
+      .then((res) => {
+        // console.log(res);
+        this.setState({
+          user: res.data,
         });
-      } else {
-        alert("please try your password again");
-      }
-    });
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
+        //console.log("this is user" + this.state.user.name);
+
+        if (this.state.user.password === this.state.password) {
+          console.log("password match", this.state.user._id);
+          this.props.history.push("/AddChildSelectChild", {
+            email: this.state.email,
+            userId: this.state.user._id,
+          });
+        } else {
+          alert("please try your password again");
+        }
+      })
+      .catch((error) => {
+        alert("user can't found please sign in");
+      });
   };
 
   handleChange = ({ target }) => {
@@ -83,10 +81,6 @@ class LogIn extends React.Component {
             <br />
 
             <button className="btn">Enter</button>
-
-            {/* {this.state.addChild === true && (
-              <AddChildSelectChild email={this.state.email} />
-            )} */}
           </div>
         </form>
       </div>

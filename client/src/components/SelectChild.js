@@ -8,9 +8,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 class SelectChild extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     email: this.props.email,
     parentName: "",
