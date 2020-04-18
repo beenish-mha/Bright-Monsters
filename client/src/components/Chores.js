@@ -10,8 +10,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
-
-import Button from "@material-ui/core/Button";
 import API from "../utils/Api";
 const useStyles = makeStyles((theme) => ({
   root1: {
@@ -35,15 +33,11 @@ const useStyles = makeStyles((theme) => ({
 
 function Chores(props) {
   let kidId = props.kidId;
-  let email = props.email;
+
   const [kidCArray, setKidCArray] = useState([{}]);
   const [values, setValues] = useState({});
   const [newValue, setnewValue] = useState("");
-  const [choreId, setchoreId] = useState("");
   const classes = useStyles();
-  let i = 1;
-  let aboutProps = {};
-
   const [checked, setChecked] = React.useState([0]);
 
   const handleToggle = (value) => () => {
@@ -88,11 +82,6 @@ function Chores(props) {
         setnewValue("");
       });
     });
-  };
-
-  const doneHandleClick = (event) => {
-    event.preventDefault();
-    const choreId = event.target.id;
   };
 
   const deleteHandleClick = (event) => {

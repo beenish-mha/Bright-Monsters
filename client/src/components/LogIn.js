@@ -1,18 +1,13 @@
 import React from "react";
 
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import API from "../utils/Api";
 
 class LogIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     email: "",
     password: "",
     user: {},
-    addChild: false,
   };
 
   submit = (e) => {
@@ -33,7 +28,6 @@ class LogIn extends React.Component {
         //console.log("this is user" + this.state.user.name);
 
         if (this.state.user.password === this.state.password) {
-          this.state.addChild = true;
           console.log("password match", this.state.user._id);
           this.props.history.push("/AddChildSelectChild", {
             email: this.state.email,
@@ -87,10 +81,6 @@ class LogIn extends React.Component {
             <br />
 
             <button className="btn">Enter</button>
-
-            {/* {this.state.addChild === true && (
-              <AddChildSelectChild email={this.state.email} />
-            )} */}
           </div>
         </form>
       </div>

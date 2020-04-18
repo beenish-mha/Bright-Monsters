@@ -1,11 +1,8 @@
 import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import API from "../utils/Api";
 
 class AddChild extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     childName: "",
     email: this.props.email,

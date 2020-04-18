@@ -36,10 +36,7 @@ function SchoolTasks(props) {
   const [kidSWArray, setKidSWArray] = useState([{}]);
   const [values, setValues] = useState({});
   const [newValue, setnewValue] = useState("");
-  const [schoolWorkId, setschoolWorkId] = useState("");
   const classes = useStyles();
-  let i = 1;
-
   const [checked, setChecked] = React.useState([0]);
 
   const handleToggle = (value) => () => {
@@ -82,11 +79,6 @@ function SchoolTasks(props) {
         setKidSWArray(res.data.reverse());
       });
     });
-  };
-
-  const doneHandleClick = (event) => {
-    event.preventDefault();
-    const taskId = event.target.id;
   };
 
   const deleteHandleClick = (event) => {

@@ -1,11 +1,8 @@
 import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import API from "../utils/Api";
 
 class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     name: "",
     email: "",
