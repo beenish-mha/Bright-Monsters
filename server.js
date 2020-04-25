@@ -1,9 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const routes = require("./routes/index");
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 mongoose.Promise = global.Promise;
 
 app.use(express.urlencoded({ extended: true }));
@@ -16,10 +17,10 @@ app.use(express.static("client/build"));
 app.use(routes);
 
 mongoose
-  .connect(
-    "mongodb+srv://beenish:Beeproject3@cluster0-ncqma.mongodb.net/test?retryWrites=true&w=majority",
-    { useUnifiedTopology: true, useNewUrlParser: true }
-  )
+  .connect(process.env.DB_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
   .then(() => console.log("MongooDB connected"))
   .catch((err) => console.log(err));
 
