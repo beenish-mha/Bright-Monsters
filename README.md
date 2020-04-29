@@ -8,11 +8,11 @@ In this app user can create their account, add their children, assign them schoo
 
 ---
 
-![screenshot of the app](client\public\brightMon1.jpg)
+![screenshot of the app](https://github.com/beenish-mha/Bright-Monsters/blob/master/client/public/brightMon1.jpg)
 
-![screenshot of the app](client\public\brigntMon2.jpg)
+![screenshot of the app](https://github.com/beenish-mha/Bright-Monsters/blob/master/client/public/brigntMon2.jpg)
 
-![screenshot of the app](client\public\brightMon3.jpg)
+![screenshot of the app](https://github.com/beenish-mha/Bright-Monsters/blob/master/client/public/brightMon3.jpg)
 
 ---
 
