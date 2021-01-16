@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../App.css";
+
 import { Link } from "react-router-dom";
 
 function NavBar() {
@@ -14,14 +16,15 @@ function NavBar() {
 
           <Link to="/LoginSignin">
             <h4 style={{ color: "rgba(0, 0, 0, 0.54)" }} className="navLogin">
-              Login / Sign In
+              Login / Join
             </h4>
             <br />
           </Link>
 
           <h4 className="curriculum">
             <a
-              style={{ color: "rgba(0, 0, 0, 0.54)" }}
+              className="green"
+              // style={{ color: "rgba(0, 0, 0, 0.54)" }}
               href="https://www.gov.uk/national-curriculum"
             >
               Curriculum
